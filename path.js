@@ -1,7 +1,7 @@
 //Your code below
 function buildPath(p,n){
   let path = [];
-  for(x=0;x<n;x++){
+  for(let x=0;x<n;x++){
     let r = Math.random()
     if(r<=p){
       path[x]=false;
@@ -10,15 +10,15 @@ function buildPath(p,n){
       path[x]=true;
     }
   }
-  path[x]=true;
-  return path[x];
+  path[n-1]=true;
+  return path;
 }
 
 function stroll(path,index){
-  if(index==path.length){
+  if(index==path.length-1){
     return 1;
   }
-  else if(index>path.length){
+  else if(index>path.length-1){
     return 0;
   }
   else{
@@ -27,14 +27,14 @@ function stroll(path,index){
 }
 
 function rsj(path,index){
-  if(index==path-1){
+  if(path[index] == path.length-1){
     return 1;
   }
-  else if(index>path-1){
+  else if(path[index] == false){
     return 0;
   }
   else{
-    return rsj(path,index+1)+rsj(path,index+2)+rsj(path,index+5)
+    return rsj(path,index+1)+rsj(path,index+2)+rsj(path,index+5);
   }
 }
 
